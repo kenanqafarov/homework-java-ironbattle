@@ -1,5 +1,5 @@
 // =============================================================================
-// IronBattle.java   —  Tam versiya (heç bir metod qısaldılmayıb)
+// IronBattle.java   —  Full version (no shortened methods)
 // =============================================================================
 
 import java.util.*;
@@ -116,7 +116,7 @@ public class IronBattle {
         System.out.println("=====================================");
         System.out.println("   IRONBATTLE SIMULATOR  ⚔️🔥🪄");
         System.out.println("=====================================");
-        System.out.println("Log faylı: " + Paths.get(LOG_FILE).toAbsolutePath());
+        System.out.println("Log file: " + Paths.get(LOG_FILE).toAbsolutePath());
         initializeLogFile();
 
         boolean exit = false;
@@ -154,9 +154,9 @@ public class IronBattle {
             try {
                 String header = "matchId,round,timestamp,attacker,damage,target,hp_left,description,pair\n";
                 Files.writeString(path, header, StandardOpenOption.CREATE);
-                System.out.println("Log faylı yaradıldı.");
+                System.out.println("Log file created.");
             } catch (IOException e) {
-                System.err.println("Log faylını yaratmaq mümkün olmadı: " + e.getMessage());
+                System.err.println("Failed to create log file: " + e.getMessage());
             }
         }
     }
@@ -175,7 +175,7 @@ public class IronBattle {
                 }
             }
             matchCounter = Integer.parseInt(maxId.substring(1)) + 1;
-            System.out.println("Növbəti matç ID-si: " + String.format("M%04d", matchCounter));
+            System.out.println("Next match ID: " + String.format("M%04d", matchCounter));
         } catch (Exception e) {
             matchCounter = 1;
         }
@@ -324,7 +324,7 @@ public class IronBattle {
         );
 
         appendToLog(logLine);
-        // System.out.println("[LOGGED → " + logLine + "]");  // debug — istəsəniz aktiv edin
+        // System.out.println("[LOGGED → " + logLine + "]");  // debug — uncomment if needed
     }
 
     private static String escapeCsv(String value) {
@@ -340,7 +340,7 @@ public class IronBattle {
                     line + "\n",
                     StandardOpenOption.APPEND, StandardOpenOption.CREATE);
         } catch (IOException e) {
-            System.err.println("Log yazma xətası: " + e.getMessage());
+            System.err.println("Error writing to log: " + e.getMessage());
         }
     }
 
